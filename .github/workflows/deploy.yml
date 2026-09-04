@@ -29,12 +29,11 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
-      - name: Build
-        run: hugo --minify
       - name: Configure Pages
+        id: pages
         uses: actions/configure-pages@v5
-        with:
-          static_site_generator: hugo
+      - name: Build
+        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
