@@ -55,9 +55,11 @@ https://purva-thakre.github.io/blog/
 
 ### One-time setup in GitHub
 
-1. Push this repo to GitHub.
-2. On the next push to `main`, the workflow runs, enables GitHub Pages, and your blog goes live.
+GitHub Pages must be enabled manually once (the workflow can't do it — it needs repo admin rights):
 
-If Pages is already enabled with a different source, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**.
+1. Push this repo to GitHub.
+2. In the repo, go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Push to `main` again — the workflow builds the site and deploys it.
 
 The `baseURL` in `config.toml` is already set to the published URL.
