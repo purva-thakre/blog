@@ -6,7 +6,7 @@ baseURL = "https://purva-thakre.github.io/blog/"
 theme = 'hugo-bearblog'
 
 # Basic metadata configuration for your blog.
-title = "My Blog"
+title = "Purva's Blog"
 author = "Your Name"
 languageCode = "en-US"
 
@@ -24,10 +24,6 @@ ignoreErrors = ["error-disable-taxonomy"]
   # The "description" of your website. This is used in the meta data of your generated html.
   description = "A minimalistic blog built with Hugo and Bear Blog"
 
-  # The path to your "favicon". This should be a square (at least 32px x 32px) png-file.
-  # Hint: It's good practise to also put a "favicon.ico"-file into your "static"-folder.
-  favicon = "images/favicon.png"
-
   # These "images" are used for the structured data templates. This will show up, when
   # services like Twitter or Slack want to generate a preview of a link to your site.
   # See https://gohugo.io/templates/internal#twitter-cards and
@@ -37,7 +33,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   # Another "title" :-). This one is used as the site_name on the Hugo's internal
   # opengraph structured data template.
   # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
-  title = "My Blog"
+title = "Purva's Blog"
 
   # GitHub repo used for the "Reply on GitHub" comment links on blog posts.
   # Readers open a pre-filled issue with their GitHub account to comment.
