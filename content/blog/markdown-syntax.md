@@ -1,18 +1,16 @@
 +++
 title = "Markdown Syntax Guide"
 date = "2020-01-03"
-description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
+description = "How Markdown is used in this blog, with examples of every feature you can use in a post."
 tags = [
     "markdown",
     "syntax",
 ]
 +++
 
-For a quick cheatsheet, check out https://simplemde.com/markdown-guide.
+Every post on this blog is written in Markdown. This guide shows the syntax I use here, so future posts stay consistent. For a quick cheatsheet, check out https://simplemde.com/markdown-guide.
 
 ---
-
-This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 <!--more-->
 
 ## Headings
@@ -28,36 +26,34 @@ The following HTML `<h1>`—`<h6>` elements represent six levels of section head
 
 ## Paragraph
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
-
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+A paragraph is just plain text separated by a blank line. Keep paragraphs short and split long posts with subheadings so they read well on the blog's single-column layout.
 
 ## Blockquotes
 
-The blockquote element represents content that is quoted from another source.
+Use a blockquote to quote another source or call out a note.
 
 #### Blockquote without attribution
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-> 
+> Keep this blog minimal.
+>
 > **Note** that you can use *Markdown syntax* within a blockquote.
 
 #### Blockquote with attribution
 
-> Don't communicate by sharing memory, share memory by communicating.
+> The best blog posts are short and focused.
 >
-> — Rob Pike[^1]
+> — Me[^1]
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+[^1]: Emphasis on *short* — one idea per post.
 
 ## Tables
 
-Tables aren't part of the core Markdown spec, but Hugo supports supports them out-of-the-box.
+Tables are rendered out-of-the-box, no setup needed.
 
-   Name | Age
---------|------
-    Bob | 27
-  Alice | 23
+   Blog | Status
+--------|--------
+  Hugo  | Ready
+Bearblog theme | In use
 
 #### Inline Markdown within tables
 
@@ -67,68 +63,50 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 
 ## Code Blocks
 
+Code blocks are highlighted with the "friendly" style and get line numbers automatically. Dark mode restyles them via `layouts/partials/custom_head.html`.
+
 #### Code block with backticks
 
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
+```python
+def hello(name):
+    print(f"Hello, {name}!")
 ```
 
 #### Code block indented with four spaces
 
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>Example HTML5 Document</title>
-    </head>
-    <body>
-      <p>Test</p>
-    </body>
-    </html>
+    def hello(name):
+        print(f"Hello, {name}!")
 
 #### Code block with Hugo's internal highlight shortcode
-{{< highlight html >}}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
+
+You can override the defaults per-block, for example to hide line numbers:
+
+{{< highlight python "lineNos=false" >}}
+def hello(name):
+    print(f"Hello, {name}!")
 {{< /highlight >}}
 
 ## List Types
 
 #### Ordered List
 
-1. First item
-2. Second item
-3. Third item
+1. Write a draft
+2. Preview it locally with `hugo server -D`
+3. Push to `main` and let the deploy workflow publish it
 
 #### Unordered List
 
-* List item
-* Another item
-* And another item
+* Keep posts short
+* Use `<!--more-->` for the summary
+* Tag every post
 
 #### Nested list
 
-* Fruit
-  * Apple
-  * Orange
-  * Banana
-* Dairy
-  * Milk
-  * Cheese
+* New post
+  * Front matter
+    * title
+    * date
+    * tags
+  * Body
+* New page
+  * Just a title
