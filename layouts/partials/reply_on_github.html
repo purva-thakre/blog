@@ -1,0 +1,17 @@
+{{ $repo := .Site.Params.githubRepo }}
+{{ $discussion := .Params.discussion }}
+{{ if and $repo $discussion }}
+<p>
+  <a href="{{ $discussion }}" rel="noopener" target="_blank">
+    Reply on GitHub
+  </a>
+  — comments require a GitHub account.
+</p>
+{{ else if $repo }}
+<p>
+  <a href="https://github.com/{{ $repo }}/discussions/new?title={{ printf "Comment on: %s" .Title | urlquery }}" rel="noopener" target="_blank">
+    Reply on GitHub
+  </a>
+  — comments require a GitHub account.
+</p>
+{{ end }}

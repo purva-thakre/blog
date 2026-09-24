@@ -39,6 +39,10 @@ ignoreErrors = ["error-disable-taxonomy"]
   # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
   title = "My Blog"
 
+  # GitHub repo used for the "Reply on GitHub" comment links on blog posts.
+  # Readers open a pre-filled issue with their GitHub account to comment.
+  githubRepo = "purva-thakre/blog"
+
   # This theme will, by default, inject a made-with-line at the bottom of the page.
   # You can turn it off, but we would really appreciate if you don’t :-).
   # hideMadeWithLine = true
@@ -63,3 +67,8 @@ ignoreErrors = ["error-disable-taxonomy"]
     lineNos = true
     lineNumbersInTable = false
     codeFences = true
+
+# The home page also emits an index.json file (with post titles, summaries
+# and content) used by the client-side search box, see layouts/index.json.
+[outputs]
+  home = ["HTML", "JSON"]

@@ -1,0 +1,71 @@
+<a href="{{ "" | relURL }}" class="title">
+  <h2>{{ .Site.Title }}</h2>
+</a>
+<nav>{{- partial "nav.html" . -}}</nav>
+
+<div class="search">
+  <input id="search-input" type="search" placeholder="Search posts…" autocomplete="off" aria-label="Search posts">
+  <ul id="search-results"></ul>
+</div>
+
+<style>
+  .search { margin-top: 0.6rem; }
+  #search-input {
+    width: 100%;
+    max-width: 360px;
+    padding: 0.3rem 0.5rem;
+    font: inherit;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  #search-results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 360px;
+  }
+  #search-results li {
+    padding: 0.2rem 0;
+  }
+  #search-results a {
+    text-decoration: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    #search-input {
+      background-color: #001a21;
+      border-color: #173c49;
+      color: #fff;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  var input = document.getElementById('search-input');
+  var results = document.getElementById('search-results');
+  var index = [];
+
+  fetch('{{ "index.json" | relURL }}')
+    .then(function (r) { return r.json(); })
+    .then(function (data) { index = data; })
+    .catch(function () {});
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    results.innerHTML = '';
+    if (!q) return;
+
+    index.forEach(function (p) {
+      var haystack = (p.title + ' ' + p.summary + ' ' + p.content).toLowerCase();
+      if (haystack.indexOf(q) !== -1) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = p.url;
+        a.textContent = p.title;
+        li.appendChild(a);
+        results.appendChild(li);
+      }
+    });
+  });
+})();
+</script>

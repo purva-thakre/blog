@@ -31,12 +31,13 @@ hugo new my-new-page.md
 
 ## Blog post template
 
-New posts start from the theme's [archetype](themes/hugo-bearblog/archetypes/blog.md). A blog post is a Markdown file with front matter at the top:
+New posts start from the site's [archetype](archetypes/blog.md). A blog post is a Markdown file with front matter at the top:
 
 ```markdown
 +++
 title = "My Post"
 date = "2026-09-24"
+draft = true
 
 # description is optional
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
@@ -48,7 +49,32 @@ Post body in Markdown goes here.
 ```
 
 - `title` and `date` are required; the rest are optional.
+- New posts start as drafts (`draft = true`) and don't appear in the built site. Set `draft = false` (or remove the line) to publish.
 - Use `<!--more-->` to split the summary (shown on the index) from the full body.
+
+## Comments (Reply on GitHub)
+
+Comments are handled with GitHub Discussions — no third-party app needed. Each post links to its **own, fixed discussion thread** that everyone replies to.
+
+Setup:
+
+1. Enable **Discussions** in the repo (**Settings → General → Features → Discussions**).
+2. Create one discussion per post, e.g. "Comments: Markdown Syntax Guide".
+3. Paste that discussion's URL into the post's front matter:
+
+```toml
+discussion = "https://github.com/purva-thakre/blog/discussions/1"
+```
+
+The **Reply on GitHub** link at the bottom of the post then points straight to that thread. If a post has no `discussion` set yet, the link falls back to opening a new discussion with the title pre-filled. The link is rendered by `layouts/partials/reply_on_github.html` and only appears on blog posts. To change the target repo, edit the `githubRepo` param in `config.toml`.
+
+## Search
+
+A client-side search box sits in the site header (no backend). On build, Hugo writes `index.json` (post titles, dates, summaries and content) and the search box filters it in the browser.
+
+- Index template: `layouts/index.json` — includes only posts in the `blog` section.
+- Search UI: `layouts/partials/header.html`.
+- To include other pages in search, add them to the `range where .Site.RegularPages "Section" "blog"` line in `layouts/index.json`.
 
 ## Code blocks
 
